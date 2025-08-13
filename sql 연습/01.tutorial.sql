@@ -136,7 +136,9 @@ select name
 --
 -- 집계 
 --    
-select count(*) from pet;
+select count(*), max(birth) from pet;
+
+
 
 
 
