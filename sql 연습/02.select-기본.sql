@@ -34,7 +34,7 @@ select distinct(title)
  from titles;
 
 --
--- where --
+-- where
 --
 -- 예제07 : employees 테이블에서 1991년 이전에 입사한 직원의 이름, 성별, 입사일을 출력
 select first_name as '이름',
