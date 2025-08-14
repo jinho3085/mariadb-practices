@@ -1,4 +1,4 @@
--- 함수, 상수, 리터럴, 연산식
+-- --함수, 상수, 리터럴, 연산식
 select version(), current_date "hello", 1 +2 from dual;
 
 -- 수학함수, 문자열 함수, 날짜함수
