@@ -19,7 +19,7 @@ public class UpdateEx02 {
 			boolean result = false;
 			
 			try {
-				// 1. JDBC Driver 로딩 --
+				// 1. JDBC Driver 로딩
 				Class.forName("org.mariadb.jdbc.Driver");
 				
 				// 2. 연결하기
