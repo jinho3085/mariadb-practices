@@ -5,6 +5,7 @@ public class EmailVo {
 	private String firstName;
 	private String lastName;
 	private String email;
+	
 	public Long getId() {
 		return id;
 	}
@@ -14,6 +15,7 @@ public class EmailVo {
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	@Override
 	public String toString() {
 		return "EmailVo [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
