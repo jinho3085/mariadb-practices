@@ -1,8 +1,10 @@
 --
--- JDBC Test SQL
+-- JDBC Test SQL 
 --
 
-desc Book;
+show databases;
+use bookmall;
+show tables;
 
 -- count
 select count(*) from Book;
@@ -15,3 +17,5 @@ delete from Book where title = '?';
 
 -- insert
  INSERT INTO Book(title, price, category_id) VALUES ('?', '?', '?');
+ 
+ 

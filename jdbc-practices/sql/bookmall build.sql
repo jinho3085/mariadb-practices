@@ -1,0 +1,101 @@
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS Orders_Book;
+DROP TABLE IF EXISTS Cart;
+DROP TABLE IF EXISTS Orders;
+DROP TABLE IF EXISTS Book;
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS category;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+-- category 테이블
+CREATE TABLE category (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- user 테이블
+CREATE TABLE user (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    UNIQUE KEY(email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- book 테이블
+CREATE TABLE book (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    price INT NOT NULL,
+    category_no BIGINT NOT NULL,
+    FOREIGN KEY (category_no) REFERENCES category(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- orders 테이블
+CREATE TABLE orders (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_no BIGINT NOT NULL,
+    number VARCHAR(50) NOT NULL,
+    payment INT NOT NULL,
+    shipping VARCHAR(255),
+    status VARCHAR(50),
+    FOREIGN KEY (user_no) REFERENCES user(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- cart 테이블
+CREATE TABLE cart (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_no BIGINT NOT NULL,
+    book_no BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (user_no) REFERENCES user(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (book_no) REFERENCES book(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- order_book 테이블
+CREATE TABLE order_book (
+    no BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_no BIGINT NOT NULL,
+    book_no BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    price INT NOT NULL,
+    FOREIGN KEY (order_no) REFERENCES orders(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (book_no) REFERENCES book(no)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+SHOW TABLES;
+
+-- 예시: book 테이블 구조 확인
+DESC book;
+DESC user;
+DESC category;
+DESC cart;
+DESC orders;
+DESC order_book;
+
+-- 모든 관련 테스트 관련 데이터 초기화
+DELETE FROM order_book;
+DELETE FROM cart;
+DELETE FROM orders;
+DELETE FROM book;
+DELETE FROM category;
+DELETE FROM user;
