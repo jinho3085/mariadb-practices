@@ -2,6 +2,12 @@
 -- JDBC Test SQL
 --
 
+select * from book;
+select count(*) from book;
+
+show tables;
+desc board;
+
 desc dept;
 
 -- select 
@@ -20,7 +26,7 @@ update dept set name = '서비스개발팀' where id = 2;
 -- email application
 -- 
 
-desc email;
+desc board;
 
 -- count
 select count(*) from email;
@@ -54,9 +60,15 @@ select id, name from user where email = 'jinho3085@naver.com' and password = pas
 
 
 update webdb.user 
-set name="정진호", password=password('123'), gender='male' 
+boardset name="정진호", password=password('123'), gender='male' 
 where id=10; -- 회원정보 수정
 
+ALTER TABLE board ADD COLUMN parent_id BIGINT DEFAULT NULL;
 
+ALTER TABLE board ADD COLUMN file_name VARCHAR(255);
 
+SELECT no, title, contents, writer, hit, reg_date, depth, parent_id, file_name AS fileName
+FROM board;
+
+ALTER TABLE board CHANGE COLUMN file_name fileName VARCHAR(255);
 
