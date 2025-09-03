@@ -27,6 +27,19 @@ update dept set name = '서비스개발팀' where id = 2;
 -- 
 
 desc board;
+select * from board;
+select count(*) from board;
+
+SELECT * FROM board
+WHERE title LIKE '%검색어%' OR contents LIKE '%검색어%' OR writer LIKE '%검색어%';
+
+-- 1페이지
+SELECT * FROM board ORDER BY no DESC LIMIT 5 OFFSET 0;
+
+-- 2페이지
+SELECT * FROM board ORDER BY no DESC LIMIT 5 OFFSET 5;
+
+
 
 -- count
 select count(*) from email;
