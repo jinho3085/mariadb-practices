@@ -72,8 +72,7 @@ delete from user where id = 2;
 select id, name from user where email = 'jinho3085@naver.com' and password = password('1234'); /* 로그인 */
 
 
-update webdb.user 
-boardset name="정진호", password=password('123'), gender='male' 
+update webdb.user
 where id=10; -- 회원정보 수정
 
 ALTER TABLE board ADD COLUMN parent_id BIGINT DEFAULT NULL;
@@ -84,4 +83,8 @@ SELECT no, title, contents, writer, hit, reg_date, depth, parent_id, file_name A
 FROM board;
 
 ALTER TABLE board CHANGE COLUMN file_name fileName VARCHAR(255);
+
+SELECT no, title, contents, fileName 
+FROM board 
+WHERE no = 1;
 
